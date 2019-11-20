@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+
+body{
+    background-color: #e4e0e3;
+}
+
+.brand-logo h3{
+    font-size: 1.8em;
+    color: rgb(216, 209, 209);
+}
+
+.navigation{
+    /* border: 1px solid black; */
+    /* color: rgb(216, 209, 209); */
+    color: rgb(216, 209, 209);
+    width: 100%;
+    height: 8vh;
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: #581845; */
+    background-color: rgb(168, 19, 64);
+}
+
+.my-nav{
+    /* background-color: #581845; */
+    /* background-color: rgb(0, 0, 0); */
+    background-color: rgb(168, 19, 64);
+    position: absolute;
+    right:0;
+    top: 7.9vh;
+    height: 92.1vh;
+    /* border: 1px solid black; */
+}
+
+.my-nav{
+    width: 45%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    transition: all .4s ease;
+    transform: translateX(100%);
+}
+
+.my-nav li{
+    list-style-type: none;
+    text-align: center;
+}
+
+.my-nav a{
+    text-decoration: none;
+    letter-spacing: 3px;
+    /* color: #0087cc; */
+    color: rgb(216, 209, 209);
+}
+
+.navigation .hamburger-icon{
+    /* border: 1px solid rgb(216, 209, 209); */
+    width: 55px;
+    height: 55px;
+    padding: 3px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all .4s ease;
+}
+
+.hamburger-icon:hover{
+    background-color: rgba(216, 209, 209, 0.3);
+}
+
+.navigation .hamburger-icon .line{
+    width: 40px;
+    height: 3px;
+    background-color: rgb(216, 209, 209);
+    /* background-color: black; */
+    border-radius: 7px;
+    margin-top: 50%;
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .4s ease;
+}
+ .line:before{ 
+     content: '';
+     position: absolute;
+     width: 40px;
+     height: 3px;
+     background-color: rgb(216, 209, 209);
+     margin-top: -8px;
+     border-radius: 7px;
+     transition: all .4s ease;
+    }
+    
+    .line:after{
+        content: '';
+        position: absolute;
+        width: 40px;
+        height: 3px;
+        background-color: rgb(216, 209, 209);
+        margin-top: 8px;
+        border-radius: 7px;    
+        transition: all .4s ease;
+    }
+
+.active .line:before{
+    transform: rotate(45deg);
+    margin-top: 0;
+}
+
+.active .line:after{
+    transform: rotate(135deg);
+    margin-top: 0;
+}
+
+.navigation .active .line{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.slide{
+    transform: translateX(0);
+}
+
+@media only screen and (min-width: 900px){
+    .hamburger-icon{
+        display: none;
+    }
+
+    .my-nav{
+        transform: translateX(0);
+        height: 7.9vh;
+        flex-flow: row;
+        top: 0;
+        position: relative;
+        align-items: center;
+        word-spacing: 7px;
+    }
+}
+
