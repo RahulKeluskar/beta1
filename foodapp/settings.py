@@ -21,6 +21,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
+    #Google Maps API
+    'django_google_maps',
+
     #Main app
     'core'
 ]
