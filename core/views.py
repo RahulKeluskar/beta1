@@ -60,7 +60,7 @@ def add_to_cart(request, slug):
 	if order_qs.exists():
 		order = order_qs[0]
 
-		if order.items.filter(item__slug=item.slug).exists():
+		if order.items.filter(meal__slug=meal.slug).exists():
 			order_item.quantity += 1
 			order_item.save()
 		else:
