@@ -54,13 +54,13 @@ def seller_details(request,seller_id):
 
 def add_to_cart(request, slug):
 	print("Hello")
-	meal = get_object_or_404(Meal, slug=slug) 
-	order_item, created = OrderItem.objects.get_or_create(meal=meal,user=request.user, ordered=False)
+	item = get_object_or_404(Meal, slug=slug) 
+	order_item, created = OrderItem.objects.get_or_create(item=item,user=request.user, ordered = False)
 	order_qs = Order.objects.filter(user=request.user, ordered=False)
 	if order_qs.exists():
 		order = order_qs[0]
 
-		if order.items.filter(meal__slug=meal.slug).exists():
+		if order.items.filter(item__slug=item.slug).exists():
 			order_item.quantity += 1
 			order_item.save()
 		else:
@@ -69,7 +69,7 @@ def add_to_cart(request, slug):
 	else:
 		order = Order.objects.create(user=request.user, ordered_date= timezone.now())
 		order.items.add(order_item) 
-	return redirect("core:product",slug=slug)
+	return redirect("core:menu",slug=slug)
 @login_required
 def remove_from_cart(request,slug):
 	print("Hello")

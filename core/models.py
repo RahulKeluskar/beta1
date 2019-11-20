@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.shortcuts import reverse
 from django_google_maps import fields as map_fields
-
+from django.conf import settings
 
 # Create your models here.
 class Seller(models.Model):  # this is to create a new model for retaurant
@@ -68,38 +68,18 @@ class Meal(models.Model):
         return self.name
 
 
-class Order(models.Model):
-    COOKING = 1
-    READY = 2
-    ONTHEWAY = 3
-    DELIVERED = 4
-
-    STATUS_CHOICES = (
-        (COOKING, "Cooking"),
-        (READY, "Ready"),
-        (ONTHEWAY, "On the way"),
-        (DELIVERED, "Delivered"),
-    )
-
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    restaurant = models.ForeignKey(Seller, on_delete=models.CASCADE)
-    address = models.CharField(max_length=500)
-    total = models.IntegerField()
-    status = models.IntegerField(choices=STATUS_CHOICES)
-    created_at = models.DateTimeField(default=timezone.now)
-    picked_at = models.DateTimeField(blank=True, null=True)
-
-    def __str__(self):
-        return str(self.id)
-
-
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, related_name='order_details', on_delete=models.CASCADE)
-    meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
-    quantity = models.IntegerField()
-    sub_total = models.IntegerField()
+    customer = models.ForeignKey(settings.AUTH_USER_MODEL,
+    on_delete=models.CASCADE)
+    seller = models.ForeignKey(Seller,
+    on_delete=models.CASCADE)
+    item = models.ForeignKey(Meal,
+    on_delete=models.CASCADE)
+    ordered = models.BooleanField(default=False)
+    quantity = models.IntegerField(default=1)
 
     def __str__(self):
-        return str(self.id)
+        return f"{self.quantity}' from {self.seller.name} by {self.customer.name}"
 
-
+class Order(models.Model):
+    pass
