@@ -13,7 +13,8 @@
 </h2>
 <ul>
 {% for item in meals %}
-	<li> {{item.name}} </li>
+	<a href={{ item.get_add_to_cart_url }} <li> {{item.name}} </li> </a>
+	<a href={{ item.get_remove_from_cart_url }} <li> Remove {{item.name}} </li> </a>
 	<img class="img-thumbnail" src="{{ item.getimage }}" style="max-width:20%">
 {% endfor %}
 </ul>

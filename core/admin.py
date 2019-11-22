@@ -1,5 +1,11 @@
 from django.contrib import admin
-from .models import Seller,Customer,Meal,Order,OrderItem
+from .models import (
+    Seller,
+    Customer,
+    Meal,
+    Order,
+    OrderItem
+)
 # Register your models here.
 admin.site.register(Seller)
 admin.site.register(Customer)

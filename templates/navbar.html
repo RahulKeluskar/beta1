@@ -30,7 +30,7 @@
         <ul class="navbar-nav nav-flex-icons">
           {% if request.user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="#">
+            <a class="nav-link waves-effect" href="/view-cart">
               <span class="badge red z-depth-1 mr-1"> 2 </span>
               <i class="fas fa-shopping-cart"></i>
               <span class="clearfix d-none d-sm-inline-block"> Cart </span>
@@ -42,6 +42,15 @@
               <span class="clearfix d-none d-sm-inline-block"> Logout </span>
             </a>
           </li>
+              {% if request.user.restaurant %}
+                <a class="nav-link waves-effect" href="">
+                  <span class="clearfix d-none d-sm-inline-block">Seller Dashboard</span>
+                </a>
+                {% else %}
+                <a class="nav-link waves-effect" href="/add-seller">
+                  <span class="clearfix d-none d-sm-inline-block">Become Seller</span>
+                </a>
+                {% endif %}
           {% else %}
           <li class="nav-item">
             <a class="nav-link waves-effect" href="{% url 'account_login' %}">

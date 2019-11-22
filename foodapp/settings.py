@@ -20,9 +20,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
+    'crispy_forms',
     #Google Maps API
-    'django_google_maps',
 
     #Main app
     'core'
@@ -95,4 +94,9 @@ if ENVIRONMENT == 'production':
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 SITE_ID = 1
+#Google API MAP KEY
 GOOGLE_MAPS_API_KEY = 'AIzaSyCcKqlPjz9ZQ4v2KSQjh-u6bAr1uMNVMEY'
+
+#Redirect login to home
+LOGIN_REDIRECT_URL = '/'
+
